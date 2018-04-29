@@ -26,6 +26,9 @@ public class Solver {
     private Move lastMove;
 
     public Solver(Board initial) {
+        if (initial == null) {
+            throw new IllegalArgumentException();
+        }
         MinPQ<Move> moves = new MinPQ<Move>();
         moves.insert(new Move(initial));
 
@@ -60,6 +63,7 @@ public class Solver {
 
     public Iterable<Board> solution() {
         if (!isSolvable()) return null;
+        
 
         Stack<Board> moves = new Stack<Board>();
         Move tmp = lastMove;
